@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LinkedIn Banner</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .banner {
+      width: 1584px;
+      /* Remove fixed height to avoid clipping */
+      /* height: 396px; */
+      background: radial-gradient(circle at top right, #2e80a5, #01415f);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 40px 100px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      /* overflow visible by default */
+    }
+    h1 {
+      font-size: 56px;
+      margin: 0;
+      text-align: right;
+    }
+    .subtitle {
+      font-size: 24px;
+      font-weight: 300;
+      margin-top: 8px;
+      text-align: right;
+    }
+    .stack-logos {
+      margin-top: 28px;
+      display: flex; /* Changed from grid to flex */
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-end;
+      align-items: center;
+      max-width: 1000px;
+    }
+    .stack-logos img {
+      height: 42px;
+      width: auto;
+      transition: transform 0.2s ease;
+    }
+    .stack-logos img:hover {
+      transform: scale(1.15);
+    }
+    .download-button {
+      margin-top: 20px;
+      padding: 12px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1f3a93;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      align-self: center;
+    }
+    .download-button:hover {
+      background-color: #01415f;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner" id="banner">
+    <h1>Aya Ben Mabrouk</h1>
+    <div class="subtitle">Junior Software Engineer | Full‑Stack Developer</div>
+    <div class="stack-logos">
+      <!-- Frontend -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" alt="Next.js" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" crossorigin="anonymous" />
+
+      <!-- Backend -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" style="filter: invert(1); background-color: #333; border-radius: 5px; padding: 4px;" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" crossorigin="anonymous" />
+
+      <!-- Databases -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" crossorigin="anonymous" />
+
+      <!-- DevOps & Cloud -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" crossorigin="anonymous" />
+
+      <!-- Tools -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" alt="Eclipse" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity" crossorigin="anonymous" />
+
+      <!-- Bonus -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" crossorigin="anonymous" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" crossorigin="anonymous" />
+    </div>
+  </div>
+
+  <!-- Put download button outside the banner -->
+  <button class="download-button" id="downloadBtn">Download Banner PNG</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const banner = document.getElementById('banner');
+      html2canvas(banner, { useCORS: true, allowTaint: false, scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'linkedin-banner.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }).catch(err => {
+        alert('Error generating image: ' + err);
+      });
+    });
+  </script>
+</body>
+</html>
